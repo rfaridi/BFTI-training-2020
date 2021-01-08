@@ -1,0 +1,615 @@
+---
+title: "Introduction to Basic Statistics"
+subtitle: "Rushad Faridi, PhD"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: [default, hygge, ninjutsu,"myprez.css"]
+    nature:
+      ratio: '16:10'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+opts_chunk$set(include=F,
+	       message=F, 
+		   warning=F, 
+		   comment=NA)
+```
+
+class: inverse,middle,center 
+
+# Quiz question no 1
+
+---
+
+Suppose in my last semester’s statistics class was attended my 120 students. Average score in the final was 70 with
+a variance of 25. What does this particular value of variance mean? 
+
+--
+
+(a) On the average, each student scored 25
+squared points more or less than the average score of 70 points. 
+
+(b) On the average, each student scored 25 points
+more or less than the average score of 70 points. 
+
+(c) Each student scored 25 squared points more than the average
+score of 70 points. 
+
+(d) The score of each student varies by 25 points. 
+
+(e) None of the above
+
+---
+
+## Statistics 
+
+* Science of collecting, organizing and analyzing numerical data 
+
+* Two types: 
+
+* Descriptive statistics 
+    - mean, median, variance, standard deviation etc
+* Inferential statistics 
+    - Hypothesis testing, confidence interval
+
+---
+
+## What is variance? 
+
+* Why it is important to know? 
+
+* Variance is some sort of average variability in bunch of numbers
+
+$$Var(x_i)= \frac{\sum{(x_i - \bar{x})^2}}{n - 1}$$
+
+---
+
+### Variance in exam score
+
+* If the variance is high, that means students' performance is variable. 
+* Their learning ability was not uniform
+
+### Variance in business sales
+
+Variance in business sales is high: 
+* means sales are consistent, some times high some time very low. 
+* High variance in stock price: means risky asset
+
+---
+
+## Variance in theory
+
+* It is the average variability in a bunch of numbers 
+
+* To find average, you need to have the total or sum 
+
+* So we need to find first the total variability
+
+* Total variability can be written as follows: 
+
+$$\sum{(x_i - \bar{x})^2}$$
+
+---
+
+Suppose I have five numbers
+
+84, 65, 95, 92, 73
+
+We first to find the average 
+
+$$\bar{x}=\frac{\sum(x_i)}{n}$$
+
+```{r}
+scores <- c(84, 65, 95, 92, 73)
+mean(scores)
+(scores-mean(scores))^2
+(total.var <- sum((scores-mean(scores))^2))
+(variance <- total.var/(length(scores)-1))
+var(scores)
+```
+
+The average of the above five scores is `r mean(scores)`
+
+The total variability can be calculated as 
+
+$$\sum{(x_i - \bar{x})^2}$$
+
+and the value is `r total.var`
+
+---
+
+## Three questions
+
+$$Var(x_i)= \frac{\sum{(x_i - \bar{x})^2}}{n - 1}$$
+
+* Why do we need to deduct $\bar{x}$ ? 
+
+* If we deduct, then why we need to square it? 
+
+* Why do we need to divide it by $n-1$  
+
+---
+name: center-slide
+
+class: center, middle
+---
+template: center-slide
+
+## Why do we need to deduct $\bar{x}$ ? 
+
+$$Var(x_i)= \frac{\sum{(x_i - \bar{x})^2}}{n - 1}$$
+
+$\bar{x}$ is a measure of central tendency, a representative value 
+
+We want to know, on the average, how much each student vary from the representative value
+
+But `mean` is not always the best way to find the `representative` value
+
+---
+
+## Why `mean` is not always the best measure
+
+Consider the following five numbers
+
+`1, 2, 3, 4, 5`
+
+
+```{r, include = FALSE}
+mean5 <- mean(c(1, 2, 3, 4, 5))
+```
+
+The average of the above five numbers is `r mean5`
+
+Now thing about the following five numbers
+
+`1, 2, 3, 4, 500`
+
+
+```{r, include = FALSE}
+mean500 <- mean(c(1, 2, 3, 4, 500))
+```
+
+The average of the above five numbers is `r mean500`
+
+###  What has gone  wrong here? 
+
+---
+template: center-slide
+
+`Mean` is a poor estimate of central/representative value  when values include outliers
+
+`Median` is a better measurement if data have outliers
+
+
+`1, 2, 3, 4, 5`
+
+`1, 2, 3, 4, 500`
+
+`Median` in both cases is the same, therefore `median` is a robust estimator of central value
+
+---
+template: center-slide
+
+Why mean is still used? 
+
+It is easily understood and has nice mathematical properties. 
+
+There are many cases where `mean` makes sense but not `median`
+
+---
+
+## If we deduct mean, then why we need to square the value? 
+
+$$Var(x_i)= \frac{\sum{(x_i - \bar{x})^2}}{n - 1}$$
+
+Why this?
+
+$$\sum_{i=1}^n{(x_i - \bar{x})^2}$$
+$$=(x_1 -\bar{x})^2+(x_2 - \bar{x})^2 + \ldots + (x_n - \bar{x})^2$$
+
+Why not this? 
+
+$$\sum_{i=1}^n{(x_i - \bar{x})}$$
+$$=(x_1 -\bar{x})+(x_2 - \bar{x}) + \ldots + (x_n - \bar{x})$$
+
+This is because, the sum of deviations is zero
+
+---
+
+template: center-slide
+
+## Then why not take `absolute value`? 
+
+--
+
+### Absolute value is very unweildly to work with 
+
+--
+
+### Mathematically very cumbersome to find statistical properties of an estimator
+
+--
+
+### That is finally we settle down on squared deviations as the best option
+
+---
+
+template: center-slide
+
+## Why do we need to divide it by $n-1$  
+
+Something to do with `degree of freedom`
+
+---
+
+class: center,middle, inverse
+
+background-image: url(./GIFs/bored_girl.gif)
+
+background-size: 100%
+
+---
+
+class: center,middle, inverse
+
+background-image: url(./GIFs/boring_simon.gif)
+
+background-size: 100%
+
+---
+
+class: center,middle, inverse
+
+background-image: url(./GIFs/eastwood_annoyed.gif)
+
+background-size: 100%
+
+---
+
+
+class: center, middle
+
+### Differerent science has different explanations
+
+
+### We will mainly focus on statistical interpretation 
+
+---
+
+class: center, inverse, middle
+
+# Simplest way to explain 
+ 
+---
+
+class: center, middle, inverse
+
+# Scenario 1
+
+---
+
+class: center, middle
+
+### Let's say we will have to choose five numbers
+
+--
+
+### What is the degree of freedom to choose these five numbers? 
+
+---
+
+## Let's check
+
+--
+
+### A says  3
+
+--
+
+### B says 4
+
+--
+
+### C says 2
+
+--
+
+### D says 5
+
+--
+
+### E says 9 
+
+--
+
+### The degree of freedom is 5 : no restrictions
+
+---
+
+class: center, middle, inverse
+
+# Scenario 2
+
+---
+
+### Let's say we will have to choose five numbers
+
+--
+
+### The average of these five numbers will have to be 3
+
+--
+
+### What is the degree of freedom to choose these five numbers? 
+
+---
+
+## Let's check
+
+--
+
+### A says  3
+
+--
+
+### B says 4
+
+--
+
+### C says 2
+
+--
+
+### D says 5
+
+--
+
+### E is in trouble 
+     * E can not just choose any number 
+     * E needs to keep in mind that average has to be 3
+     * E can not but choose 1
+     
+
+???
+She now has to consider the fact that she will have to choose the numbers such a way that average of five numbers is 3. 
+She figures that sum of those will have to be 15 to have an average of 3. She does not have any freedom to choose any number. 
+She will have to choose 1. 
+
+--- 
+
+* E can not just choose any number 
+
+* E's choice of number depends on what what others have chosen before
+
+* Therefore, E can not but choose 1
+
+---
+
+class: center, inverse, middle
+
+## Degrees of freedom in this case is 5-1 =4 
+
+---
+
+class: center, middle, inverse
+
+# Scenario 3
+
+---
+
+class: center, middle
+
+## In addition to average being 3, variance is considered to be 1 
+
+-- 
+
+## Degrees of freedom will be 5 - 2 =3
+
+---
+
+class: center, middle, inverse
+
+# Example: Formula of variance 
+
+---
+
+class: middle
+
+$$Var(x_i)= \frac{\sum{(x_i - \bar{x})^2}}{n - 1}$$
+
+--
+
+###  While calculating varinace we need to know the mean value before hand.  
+
+--
+
+###  Therefore, we lose one degree of freedom. 
+
+--
+
+###  A parameter required both variance and mean in its formula: lost 2 degrees of freedom 
+
+---
+
+class: center, middle, inverse
+
+# General rule 
+
+---
+
+class: center, middle
+
+## The more number of given parameters, the more degree of freedom we lose
+
+---
+
+class: center,middle, inverse
+
+background-image: url(./GIFs/eastwood_annoyed.gif)
+
+background-size: 100%
+
+---
+
+class: center,middle, inverse
+
+background-image: url(./GIFs/eastwood_annoyed.gif)
+
+background-size: 100%
+
+---
+
+class: center,middle, inverse
+
+background-image: url(./GIFs/finally_got_it_one.gif)
+
+background-size: 100%
+
+---
+
+
+
+---
+
+class: inverse,middle,center 
+
+# Quiz question no 2
+
+---
+
+Suppose in my last semester’s statistics class was attended my 120 students. These students were divided into
+two sections. Average score in the final exam in both of the sections was 70. But variance of section A was 25
+and section B was 35. What does this difference in variance imply? 
+
+--
+(a) Performance of the students in section B
+varied more than that of secion A students. 
+
+(b) Score of section A students is more consistent compared to section
+B students. 
+
+(c) Average score is a poorer representive value in section B compared to in section A. 
+
+(d) All of the above 
+
+(e) None of the above
+
+---
+
+class: inverse,middle,center 
+
+# Quiz question no 3
+
+---
+
+Suppose in my last semester’s statistics class was attended my 120 students. Average score in the final was 70 with
+a standard deviation of 5. What does this particular value of standard deviation imply? 
+
+(a) On the average, each
+student scored 5 squared points more or less than the average score of 70 points. 
+
+(b) On the average, each student
+scored 5 points more or less than the average score of 70 points. 
+
+(c) Each student scored 5 squared points more
+than the average score of 70 points. 
+
+(d) All of the above 
+
+(e) None of the above
+
+---
+
+## What is standard deviation
+
+Standard deviation is the square root of variance
+
+Why we need to square root the variance? 
+
+To get back to the original unit
+
+In the above example the unit of variance is `point square` 
+
+So we can say, the variance is `r variance` point square
+
+$$SD(x_i)=\sqrt{ \frac{\sum{(x_i - \bar{x})^2}}{n - 1}}$$
+
+When transformed to `standard deviation`, the unit is back to `point`
+
+```{r, include=F}
+sd.score <- sqrt(variance)
+```
+
+Therefore, we can say the standard deviation is `r round(sd.score,1)` points
+
+---
+
+class: inverse,middle,center 
+
+# Quiz question no 4
+
+---
+
+Why variance is needed to go through a square root transformation into standard deviation? 
+
+(a) There is no reason.Variance and standard deviation are conceptually the same thing. 
+
+(b) Its inconvenient to work with a variance.
+
+(c) Variance is in squared units, therefore square root transformation into standard deviation helps to get back to
+
+
+---
+
+class: inverse,middle,center 
+
+# Quiz question no 5
+
+---
+
+
+Which of the following statement is true?
+
+(a) Mean is a more robust measure of central value compared to median.
+
+(b) Median is a more robust measure of central value compared to mean.
+
+(c) Mean and Median are both robust measures of central value.
+
+(d) All of the above
+
+(e) None of the above
+
+---
+
+## Statistical inference 
+
+Find the average income of an household in Dhaka Metropolitan City
+
+Suppose there are 40,000 households 
+
+It is not possible to go to each households
+Time consuming 
+Expensive
+
+Collect Sample 
+
+Sampling design theory says 5000 household will be representative of 40,000 
+
+Population is 40,000 and 5000 is sample 
+
+Since we are estimating from a sample, there is considerable bit of uncertainty. 
+
+Anything uncertain, in statistics we deal with probability. 
+
+That's why we need to learn  about probability theory
+
+
+
+
+

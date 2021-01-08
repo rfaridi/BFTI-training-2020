@@ -1,0 +1,119 @@
+
+Let’s pick the discussion on statistical inference from the last statement of Mr. Bullet
+According to him, fresh graduates in the last five years from Department of Economics will start their job with at least 30000 Taka
+means nothing, zero, starting point
+here is
+Starting average salary of an economics graduate from university of Dhaka is 30000 Taka
+How to prove it?
+
+Hypothesis Testing
+Ideal method to test Bullet’s Hypothesis
+Find and track all the economics graduates from DU economics in the last five years department and find their starting salary
+That’s kind of prohibitive due to time and financial constraint.
+Practical Solution?
+Collect a sample
+How to collect sample?
+Bullet goes to his Facebook friend and collect data from his seniors who recently passed.
+Let’s say he contacted 10 such person and found out that their average salary is 35000 Taka.
+Does it prove it the null hypothesis , , is correct?
+Bullet’s sample is biased so the result coming out of it is also biased.
+Now biased towards what?
+First the way sample is collected.
+There is a strong possibility that senior students Bullet knows and contacted are goods students like him.
+So naturally they have higher average income than what usually economics student have
+It is positively biased
+Average income is higher than what it should be.
+Other problems with Bullet’s method
+Sample size of 10 might be too low
+What’s the optimal sample size?
+These are all topics of sampling theory
+How to collect sample
+Each of the person in the sample should have equal chance of getting selected
+The way sample is collected each of the students who passed economics department in the last five years should have equal probability of getting into the sample
+Guess what was the problem with Bullet’s sample!
+In Bullet’s sample, each person did not have equal probability of getting selected
+Only those who are in his friend list had the chance to be included.
+Those who were not in the friend list had zero probability of getting selected.
+Then what’s the ideal way to collect a sample?
+Random sampling
+Simple Random Sampling
+Get a list of all the students who passed economics department of university of Dhaka in the last five years.
+Randomly pick a certain number of students from them like they do in lottery
+Again the “certain number” is important, for now, we assume, it’s 1000
+
+First the way sample is collected.
+There is a strong possibility that  senior students Bullet knows and  contacted   are goods students like him. 
+So naturally they have higher average income than what usually economics student have
+It is positively biased
+Average income is higher than what it should be.
+
+Sample size of 10 might be too low
+What’s the optimal sample size?
+These are all topics of sampling theory
+How to collect sample
+Each of the person in the sample should have equal chance of getting selected
+The way sample is collected each of the students who passed economics department in the last five years should have equal probability of getting into the sample
+Guess what was the problem with Bullet’s sample!
+In Bullet’s sample, each person did not have equal probability of getting selected
+Only those who are in his friend list had the chance to be included.
+Those who were not in the friend list had zero probability of getting selected.
+Then what’s the ideal way to collect a sample?
+Random sampling
+Simple Random Sampling
+Get a list of all the students who passed economics department of university of Dhaka in the last five years.
+Randomly pick a certain number of students from them like they do in lottery
+Again the “certain number” is important, for now, we assume, it’s 1000
+
+Statistical Inference: Part 4
+Dr. Rushad Faridi
+Department of Economics
+University of Dhaka
+Two Types of Statistical Error
+Type I
+Type II
+Type I error
+Rejecting null when it is true
+Type II error
+Not rejecting null when it is false
+We will try to minimize the Type I error.
+Why?
+Suppose we are talking about a murder trial
+Innocent until proven guilty
+Null: person is innocent
+Alt: person is guilty
+Null: person is innocent
+Alt : person is guilty
+Rejecting null when it is true
+Meaning rejecting the person is innocent when s/he is actually innocent and then sentencing him/her to death.
+This is much more fatal error than the other scenario
+Not rejecting Null when it is false
+Null: person is innocent
+Alt : person is guilty
+Equivalent to setting a guilty man free
+So we minimize the Type I error
+Again Type I error is “rejecting null when it is true”.
+What do we mean by “minimizing” Type I error?
+It means setting a level of type I error which is tolerable.
+In statistical analysis it is standard to tolerate 5% probability of type I error.
+This “probability of Type I error” has a name
+It’s called “level of significance”
+Expressed by the Greek letter
+When we say it means
+level of significance is 5%, which means
+Probability of making type I error is 5%
+It’s okay if out of 100 times, 5 times we reject the null when it is actually true.
+It might not be okay in judiciary . It would be quite disgraceful to hang 1 innocent people in every 100 verdict, let alone 5.
+Since the consequence of Type I error in statistics is not as fatal as judiciary, 5% error is acceptable.
+In the next video lecture we will continue our discussion and we have to remember our final destination.
+We want to know whether Bullet’s claim on average salary of DU economics graduates (at least 30000 Taka) is right or wrong.
+
+
+We need to have a critical value of salary based on which we will reject or will not reject null.
+We said the concept of error will help us to achieve that
+From the discussion of error, we learned about , the level of significance
+How does help to determine that critical value of salary?
+Before going into that we will have a quick review of probability distribution which is critical for rest of the process.
+This is a very quick review on Probability Distribution.
+Normal distribution is one such probability distribution.
+Most of the time we assume data is normally distributed.
+Even though population is not normally distributed, sampling distribution is normally distributed by Central Limit Theorem.
